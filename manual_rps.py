@@ -27,4 +27,8 @@ def get_winner():
         print("You won!")
     else:
         print("It is a tie!")
-get_winner()
+
+def play():
+    get_winner()
+
+play()
