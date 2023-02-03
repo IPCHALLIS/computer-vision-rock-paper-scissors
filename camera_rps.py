@@ -1,7 +1,7 @@
 import cv2
 from keras.models import load_model
 import numpy as np
-model = load_model('keras_model.h5', compile=False)
+model = load_model("keras_Model.h5", compile=False)
 cap = cv2.VideoCapture(0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 np.set_printoptions(suppress=True)
