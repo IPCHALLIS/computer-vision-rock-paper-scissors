@@ -19,38 +19,28 @@ def get_computer_choice():
 
 
 def get_prediction():
-    timer = 0
-    start = False
-    result = False
-
-    while True:
-        ret, frame = cap.read()
+    while cap.isOpened():
+    end_after = 3
+    start = time.time()
+    ret, frame = cap.read()
+    if ret:
         frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
         image_np = np.array(frame)
         normalized_image = (image_np.astype(np.float32) / 127.5) - 1 # Normalize the image
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
         data[0] = normalized_image
-        cv2.imshow('Frame', frame)
-
-        if start:
-            if result is False:
-                timer = time.time() - initialTime
-                font = cv2.FONT_HERSHEY_SIMPLEX
-                cv2.putText(frame, str(int(timer)),(50, 100), font, 3, (0, 255, 255), 4, cv2.LINE_AA)
+        cv2.imshow("Frame", frame)
+        key = cv2.waitKey(1)
+        if key == ord('s'):
+            while True:
+                timer = time.time() - start
                 prediction = model.predict(data)
                 index = np.argmax(prediction)
                 class_name = class_names[index]
                 confidence_score = prediction[0][index]
-                if timer > 3:
-                    result = True
+                if timer >= end_after:
                     return class_name
 
-        cv2.imshow('Frame', frame)
-
-        key = cv2.waitKey(1)
-        if key == ord('s'):
-            start = True
-            initialTime = time.time()
 
 
 # get_prediction()
