@@ -8,9 +8,11 @@ import numpy as np
 model = load_model("keras_Model.h5", compile=False)
 cap = cv2.VideoCapture(0)
 np.set_printoptions(suppress=True)
+# reads class labels from this file
 class_names = open("labels.txt", "r").readlines()
 
 
+# list of class labels for function below
 labels = ['Rock', 'Paper', 'Scissors']
 
 
@@ -32,9 +34,9 @@ def get_prediction():
     Returns:
         string: prediction of the label is based on the index with the highest confidence value.
     """
-    timer = 0
-    start = False
-    result = False
+    timer = 0  # timer starts at 0
+    start = False  # when the game has not started yet
+    result = False  # when the timer has not reached the limit
 
     while True:
         ret, frame = cap.read()
@@ -46,28 +48,28 @@ def get_prediction():
         data[0] = normalized_image
         cv2.imshow('Frame', frame)
 
-        if start:
-            if result is False:
+        if start:  # if start is true, game starts.
+            if result is False:  # the result is not True when time is running
                 timer = time.time() - initial_time
-                font = cv2.FONT_HERSHEY_SIMPLEX
+                font = cv2.FONT_HERSHEY_SIMPLEX  # used to display countdown timer in the webcam
                 cv2.putText(frame, str(int(timer)), (50, 100),
                             font, 3, (0, 255, 255), 4, cv2.LINE_AA)
+                # the model is predicting the image
                 prediction = model.predict(data)
+                # takes the label index of highest confidence
                 index = np.argmax(prediction)
+                # accesses the class name from 'labels.txt' file
                 class_name = class_names[index]
-                if timer > 3:
-                    result = True
-                    return class_name
+                if timer > 3:  # if the timer exceeds 3 seconds;
+                    result = True  # result becomes True and timer stops
+                    return class_name  # returns the prediction class name
 
-        cv2.imshow('Frame', frame)
+        cv2.imshow('Frame', frame)  # displays the webcam frame window
 
         key = cv2.waitKey(1)
-        if key == ord('s'):
-            start = True
-            initial_time = time.time()
-
-
-# get_prediction()
+        if key == ord('s'):  # game starts when the user presses the 's' key
+            start = True  # after key is pressed, start is True;
+            initial_time = time.time()  # timer is initiated
 
 
 def get_winner():
@@ -78,15 +80,15 @@ def get_winner():
     Returns:
         integer: this represents the number of points for the user or computer respectively
     """
-    rounds = 1
-    computer_wins = 0
-    user_wins = 0
-    while rounds <= 3:
+    rounds = 1  # rounds begin at 1
+    computer_wins = 0  # variable to store computer wins
+    user_wins = 0  # variable to store user wins
+    while rounds <= 3:  # function will repeat for total of 3 rounds
         for i in range(rounds, 4):
             print()
-            print("Press 's' key to start the countdown: ")
+            print("Press 's' key to start the countdown: ")  # user prompt
             print()
-            print("Round: ", rounds)
+            print("Round: ", rounds)  # shows the current round
             print()
             computer = get_computer_choice()
             user = get_prediction()
@@ -139,8 +141,8 @@ def get_winner():
                 user_wins += 1
                 print("Computer Score: ", computer_wins)
                 print("Your Score: ", user_wins)
-            rounds += 1
-        else:
+            rounds += 1  # updates the round after each while loop
+        else:  # after 3 rounds, break out of the the loop
             break
 
     return computer_wins, user_wins
@@ -149,7 +151,7 @@ def get_winner():
 def play():
     """This function is called in order to play the game.
     """
-    get_winner()
+    get_winner()  # calls function above which inherits all previous functions
 
 
 play()
