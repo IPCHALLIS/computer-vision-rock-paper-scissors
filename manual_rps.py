@@ -1,34 +1,41 @@
 import random
 
-labels = ['rock', 'paper', 'scissors']
 
 def get_computer_choice():
+    labels = ['Rock', 'Paper', 'Scissors']
     computer_choice = random.choice(labels)
     return computer_choice
 
+
 def get_user_choice():
-    user_choice = input("What\'s your move: Rock, Paper, or Scissors: ").lower()
+    user_choice = input(
+        "What\'s your move: Rock, Paper, or Scissors: ").lower()
     return user_choice
 
-def get_winner():
-    computer = get_computer_choice()
-    user = get_user_choice()
-    if computer == 'rock' and user == 'scissors':
+
+def get_winner(computer_choice, user_choice):
+    if computer_choice == 'Rock' and user_choice == 'scissors':
         print("You lost")
-    elif computer == 'paper' and user == 'scissors':
+    elif computer_choice == 'Paper' and user_choice == 'scissors':
         print("You won!")
-    elif computer == 'scissors' and user == 'paper':
+    elif computer_choice == 'Scissors' and user_choice == 'paper':
         print("You lost")
-    elif user == 'rock' and computer == 'scissors':
+    elif user_choice == 'rock' and computer_choice == 'Scissors':
         print("You won!")
-    elif user == 'paper' and computer == 'scissors':
+    elif user_choice == 'paper' and computer_choice == 'Scissors':
         print("You lost")
-    elif user == 'scissors' and computer == 'paper':
+    elif user_choice == 'scissors' and computer_choice == 'Paper':
         print("You won!")
     else:
         print("It is a tie!")
 
+    return computer_choice, user_choice
+
+
 def play():
-    get_winner()
+    computer_choice = get_computer_choice()
+    user_choice = get_user_choice()
+    get_winner(computer_choice, user_choice)
+
 
 play()
