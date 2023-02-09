@@ -17,7 +17,7 @@ def get_computer_choice():
     Returns:
         string: this could be "rock", "paper", or "scissors"
     """
-    # list of class labels for function below
+    # list of class labels for function
     labels = ['Rock', 'Paper', 'Scissors']
     computer_choice = random.choice(labels)
     return computer_choice
