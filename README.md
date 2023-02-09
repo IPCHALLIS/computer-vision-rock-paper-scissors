@@ -22,6 +22,8 @@ Lastly, the fourth function, 'play', calls 'get_winner' to inherit all previous 
 
 In this section, I created a new python file called camera_rps.py. Here, I replaced the hard-coded user input from the manual_rps.py file, with the output from the trained computer vision model ('keras_Model.h5'). To obtain the model's prediction, I used 'np.argmax(prediction)' which returns the index of the class label with the highest confidence score. For interpretability, I renamed this function to 'get_prediction', instead of 'get_user_choice'.
 
+![Screenshot 2023-02-09 141730](https://user-images.githubusercontent.com/108879795/217837631-a8f2169a-dd45-4abc-9a7b-ad8bb98b7ea7.jpg)
+
 For the computer's choice, I used the same logic from the manual_rps.py file, i.e., random.choice(labels), returning a random class label from the list: ['Rock', 'Paper', 'Scissors'].
 
 ![Screenshot 2023-02-09 135922](https://user-images.githubusercontent.com/108879795/217833484-c37a8fa6-1ed2-4400-956d-769d4a6e7309.jpg)
