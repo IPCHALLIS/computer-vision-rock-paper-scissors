@@ -24,6 +24,8 @@ In this section, I created a new python file called camera_rps.py. Here, I repla
 
 For the computer's choice, I used the same logic from the manual_rps.py file, i.e., random.choice(labels), returning a random class label from the list: ['Rock', 'Paper', 'Scissors'].
 
+![Screenshot 2023-02-09 135922](https://user-images.githubusercontent.com/108879795/217833484-c37a8fa6-1ed2-4400-956d-769d4a6e7309.jpg)
+
 From this point, I added the 'get_winner' function from the manual_rps.py file, for comparing the output of 'get_prediction' and 'get_computer_choice' functions respectively. However, to improve the performance, I added 3 rounds using a while-loop, meaning the user and computer's scores would accumulate towards the final round.
 
 Next, I implemented a 3 second countdown timer for each round. To do this, I imported the time module and set it to start when the user presses the 's' key. I did this by specifying cv2.waitKey(1) & 0xFF == ord('s'), in the 'get_prediction' function. Once the user presses the 's' key, the game starts.
