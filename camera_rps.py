@@ -12,15 +12,13 @@ np.set_printoptions(suppress=True)
 class_names = open("labels.txt", "r").readlines()
 
 
-# list of class labels for function below
-labels = ['Rock', 'Paper', 'Scissors']
-
-
 def get_computer_choice():
     """This function is for the computer to choose from the list of labels above.
     Returns:
         string: this could be "rock", "paper", or "scissors"
     """
+    # list of class labels for function below
+    labels = ['Rock', 'Paper', 'Scissors']
     computer_choice = random.choice(labels)
     return computer_choice
 
@@ -72,7 +70,7 @@ def get_prediction():
             initial_time = time.time()  # timer is initiated
 
 
-def get_winner():
+def get_the_winner():
     """This is used to compare the output from the computer's choice,
         and the model's predictions for the user.
         It will add points to the winner for each round out of 3.
@@ -148,13 +146,13 @@ def get_winner():
     return computer_wins, user_wins
 
 
-def play():
+def play_game():
     """This function is called in order to play the game.
     """
-    get_winner()  # calls function above which inherits all previous functions
+    get_the_winner()  # calls function above which inherits all previous functions
 
 
-play()
+play_game()
 
 # After the loop release the cap object
 cap.release()
