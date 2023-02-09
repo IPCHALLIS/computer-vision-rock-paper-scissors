@@ -9,22 +9,22 @@ def get_computer_choice():
 
 def get_user_choice():
     user_choice = input(
-        "What\'s your move: Rock, Paper, or Scissors: ").lower()
+        "What\'s your move: Rock, Paper, or Scissors: ").title()
     return user_choice
 
 
 def get_winner(computer_choice, user_choice):
-    if computer_choice == 'Rock' and user_choice == 'scissors':
+    if computer_choice == 'Rock' and user_choice == 'Scissors':
         print("You lost")
-    elif computer_choice == 'Paper' and user_choice == 'scissors':
+    elif computer_choice == 'Paper' and user_choice == 'Scissors':
         print("You won!")
-    elif computer_choice == 'Scissors' and user_choice == 'paper':
+    elif computer_choice == 'Scissors' and user_choice == 'Paper':
         print("You lost")
-    elif user_choice == 'rock' and computer_choice == 'Scissors':
+    elif user_choice == 'Rock' and computer_choice == 'Scissors':
         print("You won!")
-    elif user_choice == 'paper' and computer_choice == 'Scissors':
+    elif user_choice == 'Paper' and computer_choice == 'Scissors':
         print("You lost")
-    elif user_choice == 'scissors' and computer_choice == 'Paper':
+    elif user_choice == 'Scissors' and computer_choice == 'Paper':
         print("You won!")
     else:
         print("It is a tie!")
