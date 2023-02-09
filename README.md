@@ -32,6 +32,8 @@ From this point, I added the 'get_winner' function from the manual_rps.py file, 
 
 Next, I implemented a 3 second countdown timer for each round. To do this, I imported the time module and set it to start when the user presses the 's' key. I did this by specifying cv2.waitKey(1) & 0xFF == ord('s'), in the 'get_prediction' function. Once the user presses the 's' key, the game starts.
 
+![Screenshot 2023-02-09 141014](https://user-images.githubusercontent.com/108879795/217835926-6f4252fd-189b-41ff-8b3e-960a45cfe863.jpg)
+
 Lastly, I wanted to make my RPS game more interactive, so I decided to display the countdown timer in the webcam window using the 'cv2.putText' method. This way, the user can keep track of when they need to present their move to the camera so I can make a prediction in time.
 
 Modules I used:
