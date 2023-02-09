@@ -28,6 +28,8 @@ For the computer's choice, I used the same logic from the manual_rps.py file, i.
 
 From this point, I added the 'get_winner' function from the manual_rps.py file, for comparing the output of 'get_prediction' and 'get_computer_choice' functions respectively. However, to improve the performance, I added 3 rounds using a while-loop, meaning the user and computer's scores would accumulate towards the final round.
 
+![Screenshot 2023-02-09 140650](https://user-images.githubusercontent.com/108879795/217835186-7d8e80b6-a0e3-4800-8ab2-36a6386d322a.jpg)
+
 Next, I implemented a 3 second countdown timer for each round. To do this, I imported the time module and set it to start when the user presses the 's' key. I did this by specifying cv2.waitKey(1) & 0xFF == ord('s'), in the 'get_prediction' function. Once the user presses the 's' key, the game starts.
 
 Lastly, I wanted to make my RPS game more interactive, so I decided to display the countdown timer in the webcam window using the 'cv2.putText' method. This way, the user can keep track of when they need to present their move to the camera so I can make a prediction in time.
