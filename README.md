@@ -36,6 +36,8 @@ Next, I implemented a 3 second countdown timer for each round. To do this, I imp
 
 Lastly, I wanted to make my RPS game more interactive, so I decided to display the countdown timer in the webcam window using the 'cv2.putText' method. This way, the user can keep track of when they need to present their move to the camera so I can make a prediction in time.
 
+![Screenshot 2023-02-09 141252](https://user-images.githubusercontent.com/108879795/217836605-1641c4b8-155c-4110-b709-43b806050428.jpg)
+
 Modules I used:
 
 - random
