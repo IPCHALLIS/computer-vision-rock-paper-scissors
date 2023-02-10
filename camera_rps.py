@@ -58,6 +58,8 @@ def get_prediction():
                 index = np.argmax(prediction)
                 # accesses the class name from 'labels.txt' file
                 class_name = class_names[index]
+                # returns class name during the countdown to see if the model is making accurate predictions or not.
+                print("Class:", class_name[2:], end="")
                 if timer > 3:  # if the timer exceeds 3 seconds;
                     result = True  # result becomes True and timer stops
                     return class_name  # returns the prediction class name
@@ -81,6 +83,7 @@ def get_the_winner():
     rounds = 1  # rounds begin at 1
     computer_wins = 0  # variable to store computer wins
     user_wins = 0  # variable to store user wins
+
     while rounds <= 3:  # function will repeat for total of 3 rounds
         for i in range(rounds, 4):
             print()
@@ -88,58 +91,45 @@ def get_the_winner():
             print()
             print("Round: ", rounds)  # shows the current round
             print()
+
             computer = get_computer_choice()
             user = get_prediction()
-            if computer == 'Rock' and user == class_names[2]:
+
+            # class_names[0] is 'Rock'
+            # class_names[1] is 'Paper'
+            # class_names[2] is 'Scissors'
+
+            if ((computer == 'Rock') and (user == class_names[2])) or ((computer == 'Scissors') and (user == class_names[1])) or ((computer == 'Paper') and (user == class_names[0])):
                 print("You lost")
-                print("Computer Chose: ", computer)
                 computer_wins += 1
-                print("Computer Score: ", computer_wins)
+                print("Computer Chose: ", computer)
                 print("Your Score: ", user_wins)
-            elif computer == 'Paper' and user == class_names[2]:
+                print("Computer Score: ", computer_wins)
+
+            elif ((computer == 'Paper') and (user == class_names[2])) or ((user == class_names[0]) and (computer == 'Scissors')) or ((user == class_names[1]) and (computer == 'Rock')):
                 print("You won!")
-                print("Computer Chose: ", computer)
                 user_wins += 1
-                print("Computer Score: ", computer_wins)
-                print("Your Score: ", user_wins)
-            elif computer == 'Scissors' and user == class_names[1]:
-                print("You lost")
                 print("Computer Chose: ", computer)
-                computer_wins += 1
-                print("Computer Score: ", computer_wins)
                 print("Your Score: ", user_wins)
-            elif user == class_names[0] and computer == 'Scissors':
-                print("You won!")
-                print("Computer Chose: ", computer)
-                user_wins += 1
                 print("Computer Score: ", computer_wins)
-                print("Your Score: ", user_wins)
-            elif user == class_names[1] and computer == 'Scissors':
-                print("You lost")
-                print("Computer Chose: ", computer)
-                computer_wins += 1
-                print("Computer Score: ", computer_wins)
-                print("Your Score: ", user_wins)
-            elif user == class_names[2] and computer == 'Paper':
-                print("You won!")
-                print("Computer Chose: ", computer)
-                user_wins += 1
-                print("Computer Score: ", computer_wins)
-                print("Your Score: ", user_wins)
-            elif user == class_names[3]:
-                print("You lost")
-                print("You did not make a valid move!")
-                computer_wins += 1
-                print("Computer Score: ", computer_wins)
-                print("Your Score: ", user_wins)
+
             else:
                 print("It is a tie!")
                 print("Computer, also chose: ", computer)
                 computer_wins += 1
                 user_wins += 1
-                print("Computer Score: ", computer_wins)
                 print("Your Score: ", user_wins)
+                print("Computer Score: ", computer_wins)
+
             rounds += 1  # updates the round after each while loop
+
+        if rounds >= 3:  # after the last round, check who won overall
+            if computer_wins > user_wins:
+                print('The computer won the game overall!')
+            elif user_wins > computer_wins:
+                print('You won the game overall!')
+            elif computer_wins == user_wins:
+                print('You and the computer tied overall!')
         else:  # after 3 rounds, break out of the the loop
             break
 
