@@ -75,7 +75,7 @@ def get_prediction():
 def get_the_winner():
     """This is used to compare the output from the computer's choice,
         and the model's predictions for the user.
-        It will add points to the winner for each round out of 3.
+        It will add points to the winner for each round out of 5.
 
     Returns:
         integer: this represents the number of points for the user or computer respectively
@@ -84,8 +84,8 @@ def get_the_winner():
     computer_wins = 0  # variable to store computer wins
     user_wins = 0  # variable to store user wins
 
-    while rounds <= 3:  # function will repeat for total of 3 rounds
-        for i in range(rounds, 4):
+    while rounds <= 5:  # function will repeat for total of 5 rounds
+        for i in range(rounds, 6):
             print()
             print("Press 's' key to start the countdown: ")  # user prompt
             print()
@@ -123,14 +123,14 @@ def get_the_winner():
 
             rounds += 1  # updates the round after each while loop
 
-        if rounds >= 3:  # after the last round, check who won overall
+        if rounds >= 5:  # after the last round, check who won overall
             if computer_wins > user_wins:
                 print('The computer won the game overall!')
             elif user_wins > computer_wins:
                 print('You won the game overall!')
             elif computer_wins == user_wins:
                 print('You and the computer tied overall!')
-        else:  # after 3 rounds, break out of the the loop
+        else:  # after 5 rounds, break out of the the loop
             break
 
     return computer_wins, user_wins
