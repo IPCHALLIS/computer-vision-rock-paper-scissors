@@ -124,6 +124,8 @@ def get_the_winner():
             rounds += 1  # updates the round after each while loop
 
         if rounds >= 5:  # after the last round, check who won overall
+            print()
+            print('Game Over')
             if computer_wins > user_wins:
                 print('The computer won the game overall!')
             elif user_wins > computer_wins:
