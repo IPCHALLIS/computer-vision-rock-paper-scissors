@@ -153,7 +153,7 @@ def play_game():
     get_the_winner()  # calls function above which inherits all previous functions
 
 
-play_game()
+play_game()  # calls function
 
 # After the loop release the cap object
 cap.release()
