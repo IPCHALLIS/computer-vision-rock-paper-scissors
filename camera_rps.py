@@ -80,60 +80,69 @@ def get_the_winner():
     Returns:
         integer: this represents the number of points for the user or computer respectively
     """
+    game_over = False
     rounds = 1  # rounds begin at 1
     computer_wins = 0  # variable to store computer wins
     user_wins = 0  # variable to store user wins
 
-    while rounds <= 5:  # function will repeat for total of 5 rounds
-        for i in range(rounds, 6):
-            print()
-            print("Press 's' key to start the countdown: ")  # user prompt
-            print()
-            print("Round: ", rounds)  # shows the current round
-            print()
+    while game_over is False:
+        while rounds <= 5:  # function will repeat for total of 5 rounds
+            if game_over is True:
+                break
+            for i in range(rounds, 6):
+                print()
+                print("Press 's' key to start the countdown: ")  # user prompt
+                print()
+                print("Round: ", rounds)  # shows the current round
+                print()
 
-            computer = get_computer_choice()
-            user = get_prediction()
+                computer = get_computer_choice()
+                user = get_prediction()
 
-            # class_names[0] is 'Rock'
-            # class_names[1] is 'Paper'
-            # class_names[2] is 'Scissors'
+                # class_names[0] is 'Rock'
+                # class_names[1] is 'Paper'
+                # class_names[2] is 'Scissors'
 
-            if ((computer == 'Rock') and (user == class_names[2])) or ((computer == 'Scissors') and (user == class_names[1])) or ((computer == 'Paper') and (user == class_names[0])):
-                print("You lost")
-                computer_wins += 1
-                print("Computer Chose: ", computer)
-                print("Your Score: ", user_wins)
-                print("Computer Score: ", computer_wins)
+                if ((computer == 'Rock') and (user == class_names[2])) or ((computer == 'Scissors') and (user == class_names[1])) or ((computer == 'Paper') and (user == class_names[0])):
+                    print("You lost")
+                    computer_wins += 1
+                    print("Computer Chose: ", computer)
+                    print("Your Score: ", user_wins)
+                    print("Computer Score: ", computer_wins)
 
-            elif ((computer == 'Paper') and (user == class_names[2])) or ((user == class_names[0]) and (computer == 'Scissors')) or ((user == class_names[1]) and (computer == 'Rock')):
-                print("You won!")
-                user_wins += 1
-                print("Computer Chose: ", computer)
-                print("Your Score: ", user_wins)
-                print("Computer Score: ", computer_wins)
+                elif ((computer == 'Paper') and (user == class_names[2])) or ((user == class_names[0]) and (computer == 'Scissors')) or ((user == class_names[1]) and (computer == 'Rock')):
+                    print("You won!")
+                    user_wins += 1
+                    print("Computer Chose: ", computer)
+                    print("Your Score: ", user_wins)
+                    print("Computer Score: ", computer_wins)
 
-            else:
-                print("It is a tie!")
-                print("Computer, also chose: ", computer)
-                computer_wins += 1
-                user_wins += 1
-                print("Your Score: ", user_wins)
-                print("Computer Score: ", computer_wins)
+                else:
+                    print("It is a tie!")
+                    print("Computer, also chose: ", computer)
+                    computer_wins += 1
+                    user_wins += 1
+                    print("Your Score: ", user_wins)
+                    print("Computer Score: ", computer_wins)
 
-            rounds += 1  # updates the round after each while loop
+                if computer_wins == 3 and user_wins < 3:
+                    print('The computer won the game overall!')
+                    game_over = True
+                    break
+                elif user_wins == 3 and computer_wins < 3:
+                    print('You won the game overall!')
+                    game_over = True
+                    break
+                elif rounds > 3 and computer_wins > user_wins:
+                    print('The computer won the game overall!')
+                    game_over = True
+                    break
+                elif rounds > 3 and user_wins > computer_wins:
+                    print('You won the game overall!')
+                    game_over = True
+                    break
 
-        if rounds >= 5:  # after the last round, check who won overall
-            print()
-            print('Game Over')
-            if computer_wins > user_wins:
-                print('The computer won the game overall!')
-            elif user_wins > computer_wins:
-                print('You won the game overall!')
-            elif computer_wins == user_wins:
-                print('You and the computer tied overall!')
-        else:  # after 5 rounds, break out of the the loop
-            break
+                rounds += 1  # updates the round after each while loop
 
     return computer_wins, user_wins
 
